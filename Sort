@@ -1,0 +1,38 @@
+// C++ progrma to sort an array
+#include <algorithm>
+#include <iostream>
+#include<fstream>
+#include<ctime>
+using namespace std;
+
+int main()
+{
+	ifstream fi("D:\\Máy tính\\CTDLVaGT_QuaTrinh\\taofiletest\\test05.txt");
+	int n;
+	int* a;
+	fi >> n;
+	a = new int[1000000];
+	if (fi.fail())
+	{
+		std::cout << "Failed to open this file!" << std::endl;
+		return -1;
+	}
+	while (!fi.eof())
+	{
+		for (int i = 0; i < 1000000; i++)
+			fi >> a[i];
+	}
+	cout << endl;
+	fi.close();
+	clock_t start, end;
+	double cpu_time_used;
+
+	start = clock();
+	sort(a, a + 1000000);
+	end = clock();
+
+	cout << "Sorted array: \n";
+	cpu_time_used = ((double)(end - start));
+	cout << "Time used " << cpu_time_used;
+	return 0;
+}
